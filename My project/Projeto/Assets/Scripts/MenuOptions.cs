@@ -10,7 +10,7 @@ public class MenuOptions : MonoBehaviour
 
     public void Menu()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Menu2");
     }
    public void Quit()
     {

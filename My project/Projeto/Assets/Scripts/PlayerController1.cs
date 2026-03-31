@@ -74,7 +74,7 @@ public class PlayerController1 : MonoBehaviour
 }
  
   
-void PauseGame()
+public void PauseGame()
     {
          if (pausaActionPlayer.WasPressedThisFrame())
         {
