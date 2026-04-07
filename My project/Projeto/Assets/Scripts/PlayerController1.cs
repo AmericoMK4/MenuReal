@@ -59,7 +59,7 @@ public class PlayerController1 : MonoBehaviour
 public void Pontos(int quantidade)
     {
         pontos = pontos + quantidade;
-      pontosPlacar.text = "Pontos: " + pontos; 
+        pontosPlacar.text = "Pontos: " + pontos; 
     } 
   
 
