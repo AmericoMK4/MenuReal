@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -69,6 +70,10 @@ public class PlayerController1 : MonoBehaviour
             CtrlVerdadeiro = true;
             Gamesettings.Parametro(CtrlVerdadeiro);
         }
+        if(vida < 1)
+        {
+            SceneManager.LoadScene("Morte");
+        }
         PauseGame();
         
        
@@ -92,10 +97,17 @@ public void PauseGame()
             Time.timeScale = 1;
         }
     }
-    public void ControleVida(int vidaP)
+   
+    
+   private void OnTriggerEnter (Collider other)
     {
-        print("chora");
-        vida = vida + vidaP;
+        if (other.CompareTag("Animais"))
+        {
+            
+            vida = vida - 1;
+            print(vida);
+            Destroy(other.gameObject);
+        }
     }
    
     }

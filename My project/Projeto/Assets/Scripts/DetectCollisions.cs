@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class DetectCollisions : MonoBehaviour
 {
-    public GameObject player;
-    public int vidaP =  -1;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -20,17 +19,11 @@ public class DetectCollisions : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Pizza"))
+        if (other.CompareTag("Animais"))
         {
             Destroy(gameObject);
             Destroy(other.gameObject);
         }
-        if (other.CompareTag("Player"))
-        {
-            print("funciona");
-            Destroy(this.gameObject);
-            player.ControleVida(vidaP);
-
-        }
+     
     }
 }

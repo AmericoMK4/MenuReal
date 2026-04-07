@@ -30,7 +30,6 @@ public GameObject player;
     {
         
         yield return new WaitForSeconds (2);
-        Debug.Log("Objeto volta");
        player.gameObject.SetActive(true);
        Ghostverdadeiro =false;
     }

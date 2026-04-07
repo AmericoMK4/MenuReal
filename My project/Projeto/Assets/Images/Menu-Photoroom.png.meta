@@ -148,10 +148,10 @@ TextureImporter:
       name: Menu-Photoroom_1
       rect:
         serializedVersion: 2
-        x: 169
-        y: 192
-        width: 156
-        height: 70
+        x: 177
+        y: 194
+        width: 140
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,10 +192,10 @@ TextureImporter:
       name: Menu-Photoroom_3
       rect:
         serializedVersion: 2
-        x: 16
-        y: 114
-        width: 110
-        height: 77
+        x: 21
+        y: 118
+        width: 102
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -280,10 +280,10 @@ TextureImporter:
       name: Menu-Photoroom_7
       rect:
         serializedVersion: 2
-        x: 127
-        y: 39
-        width: 127
-        height: 72
+        x: 135
+        y: 42
+        width: 110
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
