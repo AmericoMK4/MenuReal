@@ -678,6 +678,7 @@ GameObject:
   m_Component:
   - component: {fileID: 733140156}
   - component: {fileID: 733140155}
+  - component: {fileID: 733140157}
   m_Layer: 0
   m_Name: WorldSettings
   m_TagString: Untagged
@@ -713,6 +714,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &733140157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733140154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b1762358acf4b14a9acd1856da7f5e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DetectCollisions
+  player: {fileID: 981019821}
 --- !u!1 &823200864
 GameObject:
   m_ObjectHideFlags: 0
@@ -956,10 +970,59 @@ MonoBehaviour:
   Gamesettings: {fileID: 733140155}
   speed: 20
   xRange: 15
+  vida: 3
   projectilePrefab: {fileID: 3368550998252044939, guid: 3e72a3cfb85b1344ca8ceae8fa56d1d4, type: 3}
   CtrlVerdadeiro: 0
   InputActions: {fileID: -944628639613478452, guid: c785c3b9595cb564fb233aa5249ed4b1, type: 3}
   painel: {fileID: 823200864}
+--- !u!65 &981019829
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981019821}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 0.95895886, z: 1}
+  m_Center: {x: 0, y: -0.020520255, z: 0}
+--- !u!54 &981019830
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981019821}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &992285705
 GameObject:
   m_ObjectHideFlags: 0
@@ -1644,6 +1707,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 100046, guid: 3cf7f489270aac84fb12901330960a5b, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 400046, guid: 3cf7f489270aac84fb12901330960a5b, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1698,6 +1765,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100046, guid: 3cf7f489270aac84fb12901330960a5b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 981019826}
+    - targetCorrespondingSourceObject: {fileID: 100046, guid: 3cf7f489270aac84fb12901330960a5b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 981019829}
+    - targetCorrespondingSourceObject: {fileID: 100046, guid: 3cf7f489270aac84fb12901330960a5b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 981019830}
   m_SourcePrefab: {fileID: 100100000, guid: 3cf7f489270aac84fb12901330960a5b, type: 3}
 --- !u!1 &1762665617
 GameObject:
@@ -1907,6 +1980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ffff269196037a4c8a66f1187b2dd16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuOptions
+  painel: {fileID: 0}
 --- !u!1 &2130534997
 GameObject:
   m_ObjectHideFlags: 0

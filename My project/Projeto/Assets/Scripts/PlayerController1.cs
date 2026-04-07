@@ -10,6 +10,7 @@ public class PlayerController1 : MonoBehaviour
     
     public float speed = 20f;
     public float xRange = 15f;
+    public int vida = 3; 
     public GameObject projectilePrefab;
     private float horizontalInput;
 
@@ -18,8 +19,8 @@ public class PlayerController1 : MonoBehaviour
     public InputActionAsset InputActions;
     private InputAction moveAction;
     private InputAction fireAction;
-    private InputAction pausaActionPlayer;
     private InputAction playerFantasma;
+    private InputAction pausaActionPlayer;
     private InputAction pausaActionUI;
     public GameObject painel;
 
@@ -38,8 +39,8 @@ public class PlayerController1 : MonoBehaviour
 
         moveAction = InputSystem.actions.FindAction("Move");
         fireAction = InputSystem.actions.FindAction("Jump");
-        pausaActionPlayer = InputSystem.actions.FindAction("Pausa");
         playerFantasma = InputSystem.actions.FindAction("Ghost");
+        pausaActionPlayer = InputSystem.actions.FindAction("Pausa");
         pausaActionUI = InputSystem.actions.FindAction("Despausa");
     }
     void Update()
@@ -80,13 +81,21 @@ public void PauseGame()
         {
             painel.SetActive(true);
             InputActions.FindActionMap("Player").Disable(); 
-            InputActions.FindActionMap("UI").Enable(); 
+            InputActions.FindActionMap("UI").Enable();
+            Time.timeScale = 0;
         }
         if (pausaActionUI.WasPressedThisFrame())
         {
             painel.SetActive(false);
             InputActions.FindActionMap("Player").Enable(); 
-            InputActions.FindActionMap("UI").Disable(); 
+            InputActions.FindActionMap("UI").Disable();
+            Time.timeScale = 1;
         }
     }
+    public void ControleVida(int vidaP)
+    {
+        print("chora");
+        vida = vida + vidaP;
+    }
+   
     }
