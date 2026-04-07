@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
+using System;
 
 public class PlayerController1 : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class PlayerController1 : MonoBehaviour
     public float speed = 20f;
     public float xRange = 15f;
     public int vida = 3; 
+    public int pontos = -0;
     public GameObject projectilePrefab;
     private float horizontalInput;
 
@@ -24,6 +27,9 @@ public class PlayerController1 : MonoBehaviour
     private InputAction pausaActionPlayer;
     private InputAction pausaActionUI;
     public GameObject painel;
+    public TMP_Text vidaPlacar;
+    public TMP_Text pontosPlacar;
+ 
 
     // Update is called once per frame  
     private void OnEnable()
@@ -43,9 +49,23 @@ public class PlayerController1 : MonoBehaviour
         playerFantasma = InputSystem.actions.FindAction("Ghost");
         pausaActionPlayer = InputSystem.actions.FindAction("Pausa");
         pausaActionUI = InputSystem.actions.FindAction("Despausa");
+        Pontos(0); 
+        Placar();
     }
+     void Placar()
+    {
+         vidaPlacar.text = "Vidas: " + vida;
+    }
+public void Pontos(int quantidade)
+    {
+        pontos = pontos + quantidade;
+      pontosPlacar.text = "Pontos: " + pontos; 
+    } 
+  
+
     void Update()
     {
+           
         float horizontalInput = moveAction.ReadValue<Vector2>().x;
         // movimenta o player para esquerda e direita a partir da entrada do usu�rio
         transform.Translate(Vector3.right * speed * Time.deltaTime * horizontalInput);
@@ -78,8 +98,7 @@ public class PlayerController1 : MonoBehaviour
         
        
 }
- 
-  
+
 public void PauseGame()
     {
          if (pausaActionPlayer.WasPressedThisFrame())
@@ -97,16 +116,16 @@ public void PauseGame()
             Time.timeScale = 1;
         }
     }
-   
     
    private void OnTriggerEnter (Collider other)
     {
         if (other.CompareTag("Animais"))
         {
-            
             vida = vida - 1;
             print(vida);
             Destroy(other.gameObject);
+            Placar();
+
         }
     }
    
