@@ -31,7 +31,7 @@ public GameObject player;
         
         yield return new WaitForSeconds (2);
        player.gameObject.SetActive(true);
-       Ghostverdadeiro =false;
+       Ghostverdadeiro = false;
     }
 
        public void Parametro(bool Valor)

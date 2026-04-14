@@ -10,23 +10,25 @@ using System;
 public class PlayerController1 : MonoBehaviour
 {
     public GameSettings Gamesettings;
+    public GameObject painel;
+    public GameObject projectilePrefab;
+    public DetectCollisions pizza;
     
     public float speed = 20f;
     public float xRange = 15f;
     public int vida = 3; 
     public int pontos = -0;
-    public GameObject projectilePrefab;
     private float horizontalInput;
-
     public bool CtrlVerdadeiro = false;
+    public bool pizzaTrue = false;
 
     public InputActionAsset InputActions;
     private InputAction moveAction;
     private InputAction fireAction;
     private InputAction playerFantasma;
+    private InputAction aumentarPizza;
     private InputAction pausaActionPlayer;
     private InputAction pausaActionUI;
-    public GameObject painel;
     public TMP_Text vidaPlacar;
     public TMP_Text pontosPlacar;
  
@@ -40,15 +42,18 @@ public class PlayerController1 : MonoBehaviour
     {
         InputActions.FindActionMap("Player").Disable(); 
     }
-    
+
     private void Awake()
     {
 
         moveAction = InputSystem.actions.FindAction("Move");
         fireAction = InputSystem.actions.FindAction("Jump");
         playerFantasma = InputSystem.actions.FindAction("Ghost");
+        aumentarPizza = InputSystem.actions.FindAction("Power");
         pausaActionPlayer = InputSystem.actions.FindAction("Pausa");
         pausaActionUI = InputSystem.actions.FindAction("Despausa");
+
+        
         Pontos(0); 
         Placar();
     }
@@ -66,6 +71,7 @@ public void Pontos(int quantidade)
     void Update()
     {
            
+    
         float horizontalInput = moveAction.ReadValue<Vector2>().x;
         // movimenta o player para esquerda e direita a partir da entrada do usu�rio
         transform.Translate(Vector3.right * speed * Time.deltaTime * horizontalInput);
@@ -90,6 +96,16 @@ public void Pontos(int quantidade)
             CtrlVerdadeiro = true;
             Gamesettings.Parametro(CtrlVerdadeiro);
         }
+        if (aumentarPizza.WasPressedThisFrame()) 
+        {
+            pizzaTrue = true;
+            pizza.AumentoPizza(pizzaTrue);
+            StartCoroutine("Pizza");
+        }
+        if(pizzaTrue == false)
+        {
+            pizza.AumentoPizza(pizzaTrue);
+        }
         if(vida < 1)
         {
             SceneManager.LoadScene("Morte");
@@ -98,6 +114,11 @@ public void Pontos(int quantidade)
         
        
 }
+    IEnumerator Pizza()
+    {
+        yield return new WaitForSeconds(2);
+        pizzaTrue = false;
+    }
 
 public void PauseGame()
     {
