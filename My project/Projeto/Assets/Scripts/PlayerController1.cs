@@ -15,7 +15,7 @@ public class PlayerController1 : MonoBehaviour
     public DetectCollisions pizza;
     
     public float speed = 20f;
-    public float xRange = 15f;
+    private float xRange = 20f;
     public int vida = 3; 
     public int pontos = -0;
     private float horizontalInput;
@@ -65,6 +65,10 @@ public void Pontos(int quantidade)
     {
         pontos = pontos + quantidade;
         pontosPlacar.text = "Pontos: " + pontos; 
+        if(pontos == 20)
+        {
+            SceneManager.LoadScene("Vitoria");
+        }
     } 
   
 
@@ -106,6 +110,7 @@ public void Pontos(int quantidade)
         {
             pizza.AumentoPizza(pizzaTrue);
         }
+
         if(vida < 1)
         {
             SceneManager.LoadScene("Morte");
